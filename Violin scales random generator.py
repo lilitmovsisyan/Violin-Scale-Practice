@@ -47,7 +47,7 @@ def random_scale(scale_set, mode, bow_pattern):
     practice = '{} {}, {}'.format(scale_set[s_i],mode[m_i],bow_pattern[b_i])
     return practice
 
-"""this was my first attempt. below I make user selection easier when the number of users increases.
+"""this was my first attempt. below this, I make user selection easier when the number of users increases.
 #select the dictionary of sets via username input
 def user_selection1():
     choose_user = input("Enter your name: ")
