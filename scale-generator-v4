@@ -1,3 +1,6 @@
+#*******************************
+#INTRO
+
 #customise the welcome text
 welcome_text = """
 Welcome to the RANDOM SCALE GENERATOR for violin.
@@ -6,6 +9,9 @@ This program will generate a scale in a random key and bowing pattern for you to
 Enter your name below to generate a scale out of the ones you are familiar with.
 
 """
+
+#*******************************
+#USER INFORMATION - currently only edited in source
 
 #scale sets:
 chroma_tones = ["A","B","C","D","E","F","G","Ab/G#","Bb/A#","Db/C#","Eb/D#","F#/Gb"]
@@ -44,7 +50,10 @@ user_list = {
     "test": test
     }
 
+#*******************************
+#FUNCTIONS
 
+#DEBUGGING HERE#
 #selects the dictionary of sets via username input:
 def user_selection(database):
     choose_user = input("Enter your name: ")
@@ -84,16 +93,14 @@ def random_scale(scale_set, mode, bow_pattern):
 
 #returns random scale from user's set:
 def users_random_scale(username):
-    #if username is not None: #suggestion from stack overflow
     a_scale = random_scale(username["my_scale_set"], username["my_mode"],username["my_bow_pattern"])
     return a_scale
 
 #returns the number of different scale variations possible out of the user's set:
 def no_of_combos(username):
     max_combos = 1
-    #if username is not None: #suggestion from stackoverflow.com for NoneType error. but now im getting another one elsewhere...what's the issue?
     for key in username:
-       max_combos *= len(username[key]) # danger - what if there is an empty list stored in the dict? then *0!
+       max_combos *= len(username[key]) 
     return max_combos
 
 #prints user's random scale to console:
@@ -109,11 +116,11 @@ You have now tried every scale variation that you know so far.
 You can now learn a new scale, practice a piece of music, or...
 perhaps you'd like to try these scales again, in a different random order?
 """)
-        scale_checklist = [] #need to empty out the checklist in order to start again
-        go_again(username, scale_checklist) #see below
+        scale_checklist = [] 
+        go_again(username, scale_checklist)
     else:
-        scale = users_random_scale(username) #generate a scale
-        if scale in scale_checklist: #am considering whether a while loop might be more appropriate - i.e. to loop through this particular bit only, rather than the whole of this function, which at this stage we know the limit has not been reached so no need to repeat that step... but actually maybe not because a while loop would work for every time the condition is true, not just the next scale along...?
+        scale = users_random_scale(username)
+        if scale in scale_checklist:
             generate_scale(username, scale_checklist) 
         else:
             print ()
@@ -136,20 +143,33 @@ def go_again(username, scale_checklist):
         go_again(username, scale_checklist)
 
 
-     
-#NOT YET FIXED# if i enter the name incorrectly, although it successfully initiates re-prompt,
-#iit then does a traceback error when the name is entered correctly. 
-
 #*******************************
 def run_program():
-    #print (welcome_text)
+    print (welcome_text)
     name = user_selection(user_list)
     scale_list = []
     generate_scale(name, scale_list)
 #*******************************
 
 run_program()
-#scale_list = []
-#name = user_selection(user_list)
-#generate_scale(test, scale_list)
+
+"""*******************************
+#BUGS NOT YET FIXED#
+
+(1) if i enter the name incorrectly, although it successfully initiates re-prompt,
+but then when the name is entered correctly, it then produces a traceback "NoneType" error.
+
+*NOTE TO SELF*
+#if username is not None:
+#suggestion from stackoverflow.com for NoneType error. but now im getting another one elsewhere...what's the issue?
+
+(2) function: no_of_combos(u), variable: max_combos =*len(u[key])
+# danger - what if there is an empty list stored in the dict? then *0!
+
+(3) see function: user_selection
+
+*********************************"""
+
+
+
 
