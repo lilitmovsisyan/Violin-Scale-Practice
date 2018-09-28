@@ -1,4 +1,5 @@
-VIOLIN SCALE GENERATOR
+## VIOLIN SCALE GENERATOR 
+
 Randomly generates musical scales with bowings
 
 To run:
