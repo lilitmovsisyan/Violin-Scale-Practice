@@ -2,8 +2,11 @@
 
 Randomly generates musical scales with bowings
 
-To run:
-$ python violin_scale_generator/violin_scale_generator.py
+python 3.6 required.
+
+To run from command line, navigate into violin_scale_generator folder, then:
+
+$ python violin_scale_generator.py
 
 The aim of the application is to help violin students practice their scales by generating a random scale out of the user's set of scales and bowing patterns.
 
